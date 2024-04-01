@@ -1,5 +1,8 @@
 import networkx as nx
 
+INF = 1000000 # Usado como "infinito" so pra ficar mais facil de escrever
+ORIGEM = 1 # no de origem, tem que estar no grafo
+
 
 def ler_dados_entrada(nome_arquivo):
     grafo = nx.MultiDiGraph()
@@ -16,43 +19,62 @@ def ler_dados_entrada(nome_arquivo):
     arq.close()
     return grafo
 
-
-def vizinho_perto(vizinhos, no):
-    mais_perto = None
-    vizinhos_ordenado = []
-    indice = 0
-    if vizinhos:
-        mais_perto = vizinhos[0]
-        for j in vizinhos:
-            if peso(grafo, no, j) < peso(grafo, no, mais_perto):
-                if mais_perto not in vizinhos_ordenado:
-                    vizinhos_ordenado.append(mais_perto)
-        print(f'Vizinho mais perto do nó {no}: {mais_perto}')
-    return vizinhos_ordenado
+#retorna o no mais perto
+def minimo(lista, chave=None):
+    minimo = None
+    
+    for item in lista:
+        valor_chave = chave(item) if chave else item
+        if minimo is None or (chave and chave(item) < chave(minimo)) or (not chave and item < minimo):
+            minimo = item
+    return minimo
 
 def peso(grafo, no1, no2):
-    if grafo.has_edge(no1, no2):
-        # Retorna o peso da aresta
-        return grafo[no1][no2]['weight']
-    else:
-        # Retorna None se a aresta não existir
+    if grafo.has_edge(no1, no2): #retorna o peso da aresta
+        return (grafo[no1][no2][0]['weight'])
+    else: #retorna None se a aresta não existir
         return None
 
 def dijkstra(grafo, origem):
-    distancias = {}
-    visitados = []
-    #Coloca as distancias em infinito
-    for i in grafo.nodes:
-        distancias[i] = float('inf')
-    distancias[origem] = 0 #Menos a da origem
+    distancias ={}
+    caminhos = {}
+    caminhos[origem] = [origem]
 
-    for i in grafo.nodes:
-        vizinhos_i = vizinho_perto(list(grafo.successors(i)), i)
-        for j in vizinhos_i:
-            vizinhos_j = vizinho_perto(vizinhos_i, j)
+    for i in  grafo.nodes: # preenche as distancias como infinito, nesse caso so um numero grande
+        distancias[i] = INF
+    distancias[origem] = 0 #distancia da origem é 0
 
+    aberto = list(grafo.nodes)
+    fechado = []
+    print(aberto)
 
-def imprimir_dados_das_arestas(grafo):
+    while aberto:
+        no_atual = minimo(aberto, chave=lambda no: distancias[no])
+        aberto.remove(no_atual)
+        fechado.append(no_atual)
+       
+
+        for vizinho in grafo.successors(no_atual):
+            caminho_atual =[] # deixar aqui pra limpar o caminho atual
+            #soma a distancia do no atual com o peso pro proximo no
+            dist_teste = distancias[no_atual]+ peso(grafo, no_atual,vizinho) 
+            if dist_teste < distancias[vizinho]:
+                distancias[vizinho] = dist_teste
+                caminho_atual.append(no_atual)
+                caminho_atual.append(vizinho)
+                caminhos[vizinho] = caminho_atual
+
+    imprimir_distancias_e_caminho(distancias, caminhos)
+    return distancias
+  
+        
+
+def imprimir_distancias_e_caminho(distancias, caminho):
+    for i in distancias:
+        print(f'\nDistacia da origem ate {i}: {distancias[i]}')
+        print(f'Caminho percorrido: {list(caminho[i])} ')
+
+def imprimir_dados_das_arestas(grafo): # pra testar se leu o arquivo corretamente 
     for i in grafo.nodes:
         sucessores = list(grafo.successors(i))
         for vizinho in sucessores:
@@ -65,5 +87,5 @@ def imprimir_dados_das_arestas(grafo):
 
 grafo = ler_dados_entrada("entrada.txt")
 
-imprimir_dados_das_arestas(grafo)
-dijkstra(grafo, 1)
+#imprimir_dados_das_arestas(grafo)
+dijkstra(grafo, ORIGEM)
