@@ -1,7 +1,7 @@
 import networkx as nx
 
 INF = 1000000 # Usado como "infinito" so pra ficar mais facil de escrever
-ORIGEM = 1 # no de origem, tem que estar no grafo
+ORIGEM = 4 # no de origem, tem que estar no grafo
 
 
 def ler_dados_entrada(nome_arquivo):
