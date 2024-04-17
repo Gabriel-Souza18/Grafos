@@ -1,5 +1,4 @@
 import networkx as nx
-import matplotlib.pyplot as plt
 
 INF = 1000000 # Usado como "infinito" so pra ficar mais facil de escrever
 ORIGEM = 4 # no de origem, tem que estar no grafo
@@ -56,7 +55,7 @@ def dijkstra(grafo, origem):
        
 
         for vizinho in grafo.successors(no_atual):
-            caminho_atual =[] # deixar aqui pra limpar o caminho atual
+            caminho_atual =[] 
             #soma a distancia do no atual com o peso pro proximo no
             dist_teste = distancias[no_atual]+ peso(grafo, no_atual,vizinho) 
             if dist_teste < distancias[vizinho]:

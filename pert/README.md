@@ -21,14 +21,16 @@ Esse codigo lê um arquivo de entrada, e cria um grafo, depois mede o tempo maxi
     [...]
 
 ```
-## Exemplo De saida 
+## Exemplo De saída 
 ```
 Tempo Maximo:{1: 0, 2: 7, 3: 5, 4: 16, 5: 16, 6: 27, 7: 20, 8: 30, 9: 36, 10: 34, 11: 43}
 
 Folgas: {1: 0, 2: 0, 3: 11, 4: 0, 5: 0, 6: 0, 7: 10, 8: 0, 9: 0, 10: 2, 11: 0}
 ```
 Este programa ainda mostra o grafo usando a biblioteca Matplotlib\
-<img src='pert\Exemplo_de_saida.png'>
+<img src='Exemplo_de_saida.png'>
+
+
 ## Para rodar 
 Tem que intalar as bibliotecas:
 * Networkx\
