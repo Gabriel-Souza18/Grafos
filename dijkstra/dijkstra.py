@@ -1,4 +1,5 @@
 import networkx as nx
+import matplotlib.pyplot as plt
 
 INF = 1000000 # Usado como "infinito" so pra ficar mais facil de escrever
 ORIGEM = 4 # no de origem, tem que estar no grafo
@@ -85,7 +86,7 @@ def imprimir_dados_das_arestas(grafo): # pra testar se leu o arquivo corretament
                 print(f"Não há aresta entre {i} e {vizinho}")
 
 
-grafo = ler_dados_entrada("entrada.txt")
+grafo = ler_dados_entrada("dijkstra\entrada.txt")
 
 #imprimir_dados_das_arestas(grafo)
 dijkstra(grafo, ORIGEM)
