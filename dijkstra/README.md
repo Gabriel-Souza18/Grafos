@@ -24,3 +24,20 @@ def dijkstra(grafo, origem):
     imprimir_distancias_e_caminho(distancias, caminhos)
     return distancias
 ```
+## Exemplo de saida
+```
+Distacia da origem ate 1: 3
+Caminho percorrido: [4, 1] 
+
+Distacia da origem ate 2: 4
+Caminho percorrido: [1, 2] 
+
+Distacia da origem ate 5: 5
+Caminho percorrido: [1, 5]
+
+Distacia da origem ate 3: 5
+Caminho percorrido: [2, 3]
+
+Distacia da origem ate 4: 0
+Caminho percorrido: [4]
+```
