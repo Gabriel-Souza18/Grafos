@@ -61,14 +61,14 @@ def Max_flow(grafo: nx.DiGraph):
         caminho_atual = ['s']
         no_atual = Selecionar_maior(grafo, 's')
         if no_atual is None:
-            break  # No augmenting path found
+            break 
         caminho_atual.append(no_atual)
         
         while no_atual != 't':
             
             proximo = Selecionar_maior(grafo, no_atual)
             if proximo is None:
-                break  # No valid path to 't'
+                break  
             caminho_atual.append(proximo)
             no_atual = proximo
         if no_atual == 't':
