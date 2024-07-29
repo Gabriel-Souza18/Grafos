@@ -77,7 +77,7 @@ def Max_flow(grafo: nx.DiGraph):
             print("Caminho percorrido"+str(caminho_atual))
             
             
-        print("Maximum flow:", max_flow)
+        print("Fluxo Maximo:", max_flow)
         print_grafo(grafo)
 
 def main():
