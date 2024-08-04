@@ -22,4 +22,20 @@ Esse algoritmo calcula o fluxo maximo de um grafo direcionado
         print("Fluxo Maximo:", max_flow)
         print_grafo(grafo)
 ```
-# Exemplo de saida
+## Exemplo de saida
+Fluxo Maximo: 60
+
+Aresta entre s e a: {'capacidade': 10, 'caminho_valido': False}<br>
+Aresta entre s e c: {'capacidade': 20, 'caminho_valido': False}<br>
+Aresta entre a e b: {'capacidade': 70, 'caminho_valido': False}<br>
+Aresta entre a e d: {'capacidade': 30, 'caminho_valido': False}<br>
+Aresta entre c e b: {'capacidade': 30, 'caminho_valido': False}<br>
+Aresta entre b e t: {'capacidade': 0, 'caminho_valido': False}<br>
+Aresta entre d e t: {'capacidade': 0, 'caminho_valido': False}<br>
+
+
+## Para rodar 
+Tem que intalar as bibliotecas:
+* Networkx\
+Site com tutorial para instalação:
+https://networkx.org/documentation/stable/install.html
